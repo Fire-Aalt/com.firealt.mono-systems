@@ -3,7 +3,7 @@ using System;
 using ArtificeToolkit.Attributes;
 using UnityEngine;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     [RequireComponent(typeof(SceneTransitionManager))]
     public class SceneLoader : Singleton<SceneLoader>

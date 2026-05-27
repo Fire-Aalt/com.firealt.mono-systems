@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     /// <summary>
     /// Timer that counts in intervals that can be changed on the fly.

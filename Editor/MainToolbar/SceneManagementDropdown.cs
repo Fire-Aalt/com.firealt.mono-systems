@@ -1,16 +1,16 @@
 using System.Collections.Generic;
-using KrasCore.Editor;
+using FireAlt.Core.Editor;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditor.Toolbars;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace KrasCore.Essentials.Editor
+namespace FireAlt.Essentials.Editor
 {
     public static class SceneManagementDropdown
     {
-        private const string Path = "KrasCore/Scene Management";
+        private const string Path = "FireAlt/Scene Management";
         
         static SceneManagementDropdown()
         {

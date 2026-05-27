@@ -1,6 +1,6 @@
 using System;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     /// <summary>
     /// Timer that ticks at a specific frequency. (N times per second)

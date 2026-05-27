@@ -1,6 +1,6 @@
 ﻿
 #if UNITY_EDITOR
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public static class EditorScenesDataWrapper
     {

@@ -9,7 +9,7 @@ using ArtificeToolkit.Attributes;
 using UnityEditor;
 #endif
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     [Serializable]
     public class SubSceneReference

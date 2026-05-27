@@ -10,7 +10,7 @@ using SceneReference = Eflatun.SceneReference.SceneReference;
 using UnityEditor.SceneManagement;
 #endif
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     [Serializable]
     public class SceneGroup

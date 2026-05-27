@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public static class EventBus<T> where T : IEvent {
         static readonly HashSet<IEventBinding<T>> bindings = new HashSet<IEventBinding<T>>();

@@ -1,6 +1,6 @@
 using System;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     /// <summary>
     /// Timer that counts down from a specific value to zero.

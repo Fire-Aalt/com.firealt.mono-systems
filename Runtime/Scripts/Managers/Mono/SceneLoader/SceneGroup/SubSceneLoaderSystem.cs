@@ -5,7 +5,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Scenes;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public struct SubSceneLoaderSingleton : IComponentData, IDisposable
     {

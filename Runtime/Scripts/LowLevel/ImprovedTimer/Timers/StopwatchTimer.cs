@@ -1,4 +1,4 @@
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     /// <summary>
     /// Timer that goes from 0 to infinity.

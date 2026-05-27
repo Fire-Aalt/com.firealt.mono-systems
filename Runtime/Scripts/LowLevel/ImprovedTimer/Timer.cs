@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public abstract class Timer : IDisposable
     {

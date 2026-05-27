@@ -15,7 +15,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 #endif
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public class SceneGroupManager
     {

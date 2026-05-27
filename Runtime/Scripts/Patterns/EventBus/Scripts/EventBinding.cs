@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public interface IEventBinding<T> {
         public Action<T> OnEvent { get; set; }

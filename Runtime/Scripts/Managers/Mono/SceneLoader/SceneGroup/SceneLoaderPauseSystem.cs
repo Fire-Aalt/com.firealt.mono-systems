@@ -1,6 +1,6 @@
 using Unity.Entities;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     [UpdateInGroup(typeof(InitializationSystemGroup))]
     public partial struct SceneLoaderPauseSystem : ISystem

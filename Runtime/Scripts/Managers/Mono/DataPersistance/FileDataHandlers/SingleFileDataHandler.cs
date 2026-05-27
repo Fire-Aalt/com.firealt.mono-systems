@@ -1,4 +1,4 @@
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public class SingleFileDataHandler<T> : FileDataHandler<T> where T : DataModel
     {

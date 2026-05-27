@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public class Singleton<T> : MonoBehaviour where T : Component
     {

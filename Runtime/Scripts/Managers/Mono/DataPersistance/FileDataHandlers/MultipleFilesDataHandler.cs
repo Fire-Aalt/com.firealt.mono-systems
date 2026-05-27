@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public class MultipleFilesDataHandler<T> : FileDataHandler<T> where T : DataModel
     {

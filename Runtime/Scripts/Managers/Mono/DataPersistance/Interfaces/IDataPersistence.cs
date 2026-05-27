@@ -1,4 +1,4 @@
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public interface IDataPersistence<T> where T : DataModel
     {

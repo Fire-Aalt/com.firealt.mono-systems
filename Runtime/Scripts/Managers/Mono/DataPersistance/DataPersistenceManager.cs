@@ -8,9 +8,9 @@ using ArtificeToolkit.Attributes;
 using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 using Eflatun.SceneReference;
-using KrasCore.Essentials;
+using FireAlt.Essentials;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public abstract class DataPersistenceManager<T1, T2> : Singleton<DataPersistenceManager<T1, T2>> where T1 : SettingsDataModel where T2 : GameDataModel
     {

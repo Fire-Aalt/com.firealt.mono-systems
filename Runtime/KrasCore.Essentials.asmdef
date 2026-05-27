@@ -1,6 +1,6 @@
 {
-    "name": "KrasCore.Essentials",
-    "rootNamespace": "KrasCore.Essentials",
+    "name": "FireAlt.Essentials",
+    "rootNamespace": "FireAlt.Essentials",
     "references": [
         "Unity.Addressables",
         "Unity.ResourceManager",
@@ -16,7 +16,7 @@
         "Unity.Collections",
         "Unity.Scenes.Editor",
         "Unity.Mathematics",
-        "KrasCore"
+        "FireAlt.Core"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

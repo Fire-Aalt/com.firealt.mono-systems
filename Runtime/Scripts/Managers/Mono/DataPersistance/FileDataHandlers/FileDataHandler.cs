@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.IO;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public abstract class FileDataHandler<T> where T : DataModel
     {

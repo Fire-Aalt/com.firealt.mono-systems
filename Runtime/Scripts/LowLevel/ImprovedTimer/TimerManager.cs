@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using KrasCore;
+using FireAlt;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public static class TimerManager
     {

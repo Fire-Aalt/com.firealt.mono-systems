@@ -2,7 +2,7 @@
 using Cysharp.Threading.Tasks;
 using Eflatun.SceneReference;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public static class BootLoader
     {

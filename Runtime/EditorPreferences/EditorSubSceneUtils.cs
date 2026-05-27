@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
             
     [InitializeOnLoad]

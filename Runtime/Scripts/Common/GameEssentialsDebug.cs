@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     public static class GameEssentialsDebug
     {

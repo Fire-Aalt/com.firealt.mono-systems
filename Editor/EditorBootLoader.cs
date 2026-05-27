@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEditor.SceneManagement;
 using UnityEditor;
 
-namespace KrasCore.Essentials.Editor
+namespace FireAlt.Essentials.Editor
 {
     [InitializeOnLoad]
     public static class EditorBootLoader

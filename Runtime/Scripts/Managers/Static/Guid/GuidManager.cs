@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     /// <summary>
     /// Class to handle registering and accessing objects by GUID

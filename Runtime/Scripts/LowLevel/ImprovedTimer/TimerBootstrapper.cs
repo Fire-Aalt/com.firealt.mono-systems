@@ -1,7 +1,8 @@
+using FireAlt.Core;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-namespace KrasCore.Essentials
+namespace FireAlt.Essentials
 {
     internal static class TimerBootstrapper
     {
