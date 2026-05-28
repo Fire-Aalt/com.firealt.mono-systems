@@ -8,7 +8,6 @@ using ArtificeToolkit.Attributes;
 using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 using Eflatun.SceneReference;
-using FireAlt.Essentials;
 
 namespace FireAlt.Essentials
 {

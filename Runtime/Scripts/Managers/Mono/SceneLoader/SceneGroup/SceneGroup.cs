@@ -2,12 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ArtificeToolkit.Attributes;
-using Eflatun.SceneReference;
 using UnityEngine.SceneManagement;
 using SceneReference = Eflatun.SceneReference.SceneReference;
 
 #if UNITY_EDITOR
-using UnityEditor.SceneManagement;
 #endif
 
 namespace FireAlt.Essentials
