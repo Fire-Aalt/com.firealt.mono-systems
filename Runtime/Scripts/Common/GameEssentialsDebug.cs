@@ -4,7 +4,7 @@ namespace FireAlt.Essentials
 {
     public static class GameEssentialsDebug
     {
-        public const string DEBUG_BEGINNING = "<color=#00ffff>[RenderDream.GameEssentials]</color> ";
+        public const string DEBUG_BEGINNING = "<color=#00ffff>[FireAlt.GameEssentials]</color> ";
 
         public static void Log(string message)
         {
