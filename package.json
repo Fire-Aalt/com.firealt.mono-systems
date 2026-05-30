@@ -1,5 +1,5 @@
 {
-  "name": "com.firealt.mono",
+  "name": "com.firealt.mono-systems",
   "version": "0.1.0",
   "displayName": "FireAlt Mono Systems",
   "description": "A package that focuses on adding essential classes, such as: managers, EventBus, BootLoader, etc.",
