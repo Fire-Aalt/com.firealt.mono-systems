@@ -1,9 +1,9 @@
 {
-  "name": "com.firealt.gameessentials",
-  "version": "1.2.3",
-  "displayName": "FireAlt Game Essentials",
-  "discription": "A package that focuses on adding essential classes, such as: managers, EventBus, BootLoader, etc.",
-  "unity": "2022.3",
+  "name": "com.firealt.mono",
+  "version": "0.1.0",
+  "displayName": "FireAlt Mono",
+  "description": "A package that focuses on adding essential classes, such as: managers, EventBus, BootLoader, etc.",
+  "unity": "6000.3",
   "dependencies": {
     "com.firealt.core": "1.0.0",
     "com.eflatun.scenereference": "git+https://github.com/starikcetin/Eflatun.SceneReference.git#4.0.0",
