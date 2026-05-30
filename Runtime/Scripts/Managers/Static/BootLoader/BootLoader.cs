@@ -2,7 +2,7 @@
 using Cysharp.Threading.Tasks;
 using Eflatun.SceneReference;
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     public static class BootLoader
     {

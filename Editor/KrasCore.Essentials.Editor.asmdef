@@ -1,6 +1,6 @@
 {
-    "name": "FireAlt.Essentials.Editor",
-    "rootNamespace": "FireAlt.Essentials",
+    "name": "FireAlt.Mono.Editor",
+    "rootNamespace": "FireAlt.Mono",
     "references": [
         "Unity.Addressables",
         "Unity.ResourceManager",
@@ -15,7 +15,7 @@
         "Unity.Mathematics",
         "FireAlt.Core",
         "FireAlt.Core.Editor",
-        "FireAlt.Essentials"
+        "FireAlt.Mono"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

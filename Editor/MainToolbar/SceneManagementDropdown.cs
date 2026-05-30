@@ -6,7 +6,7 @@ using UnityEditor.Toolbars;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace FireAlt.Essentials.Editor
+namespace FireAlt.Mono.Editor
 {
     public static class SceneManagementDropdown
     {

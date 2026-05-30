@@ -1,4 +1,4 @@
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     public class SingleFileDataHandler<T> : FileDataHandler<T> where T : DataModel
     {

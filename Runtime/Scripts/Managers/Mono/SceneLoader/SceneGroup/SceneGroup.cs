@@ -8,7 +8,7 @@ using SceneReference = Eflatun.SceneReference.SceneReference;
 #if UNITY_EDITOR
 #endif
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     [Serializable]
     public class SceneGroup

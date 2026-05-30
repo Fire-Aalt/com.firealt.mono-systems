@@ -3,7 +3,7 @@ using System;
 using ArtificeToolkit.Attributes;
 using UnityEngine;
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     [RequireComponent(typeof(SceneTransitionManager))]
     public class SceneLoader : Singleton<SceneLoader>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     public interface IEventBinding<T> {
         public Action<T> OnEvent { get; set; }

@@ -1,4 +1,4 @@
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     public interface IDataPersistence<T> where T : DataModel
     {

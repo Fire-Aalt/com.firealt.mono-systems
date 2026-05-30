@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     public class GameEssentialsSettingsProvider : SettingsProvider
     {

@@ -2,7 +2,7 @@ using ArtificeToolkit.Attributes;
 using Eflatun.SceneReference;
 using UnityEngine;
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     [CreateAssetMenu(menuName = "Data/Scenes Data")]
     public class ScenesDataSO : ScriptableObject

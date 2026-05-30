@@ -1,6 +1,6 @@
 {
-    "name": "FireAlt.Essentials",
-    "rootNamespace": "FireAlt.Essentials",
+    "name": "FireAlt.Mono",
+    "rootNamespace": "FireAlt.Mono",
     "references": [
         "Unity.Addressables",
         "Unity.ResourceManager",

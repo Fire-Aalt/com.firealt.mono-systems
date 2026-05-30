@@ -1,6 +1,6 @@
 ﻿
 #if UNITY_EDITOR
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     public static class EditorScenesDataWrapper
     {

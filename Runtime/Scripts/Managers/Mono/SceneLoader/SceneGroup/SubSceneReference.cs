@@ -9,7 +9,7 @@ using ArtificeToolkit.Attributes;
 using UnityEditor;
 #endif
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     [Serializable]
     public class SubSceneReference

@@ -1,5 +1,5 @@
 #if UNITY_EDITOR
-using FireAlt.Essentials;
+using FireAlt.Mono;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;

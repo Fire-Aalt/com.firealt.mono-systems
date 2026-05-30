@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
             
     [InitializeOnLoad]

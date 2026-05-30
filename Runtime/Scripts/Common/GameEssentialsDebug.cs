@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     public static class GameEssentialsDebug
     {

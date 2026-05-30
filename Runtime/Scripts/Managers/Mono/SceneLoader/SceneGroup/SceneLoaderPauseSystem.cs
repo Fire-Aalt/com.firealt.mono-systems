@@ -1,6 +1,6 @@
 using Unity.Entities;
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     [UpdateInGroup(typeof(InitializationSystemGroup))]
     public partial struct SceneLoaderPauseSystem : ISystem

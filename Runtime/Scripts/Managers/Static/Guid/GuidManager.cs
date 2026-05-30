@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace FireAlt.Essentials
+namespace FireAlt.Mono
 {
     /// <summary>
     /// Class to handle registering and accessing objects by GUID
