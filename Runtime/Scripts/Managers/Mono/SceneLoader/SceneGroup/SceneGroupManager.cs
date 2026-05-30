@@ -15,7 +15,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 #endif
 
-namespace FireAlt.Mono
+namespace FireAlt.MonoSystems
 {
     public class SceneGroupManager
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEditor.SceneManagement;
 using UnityEditor;
 
-namespace FireAlt.Mono.Editor
+namespace FireAlt.MonoSystems.Editor
 {
     [InitializeOnLoad]
     public static class EditorBootLoader

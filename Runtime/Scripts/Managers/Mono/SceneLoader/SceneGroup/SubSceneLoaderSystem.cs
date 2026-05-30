@@ -5,7 +5,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Scenes;
 
-namespace FireAlt.Mono
+namespace FireAlt.MonoSystems
 {
     public struct SubSceneLoaderSingleton : IComponentData, IDisposable
     {

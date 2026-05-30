@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.IO;
 
-namespace FireAlt.Mono
+namespace FireAlt.MonoSystems
 {
     public abstract class FileDataHandler<T> where T : DataModel
     {

@@ -1,6 +1,6 @@
 {
-    "name": "FireAlt.Mono.Editor",
-    "rootNamespace": "FireAlt.Mono",
+    "name": "FireAlt.MonoSystems.Editor",
+    "rootNamespace": "FireAlt.MonoSystems",
     "references": [
         "Unity.Addressables",
         "Unity.ResourceManager",
@@ -15,7 +15,7 @@
         "Unity.Mathematics",
         "FireAlt.Core",
         "FireAlt.Core.Editor",
-        "FireAlt.Mono"
+        "FireAlt.MonoSystems"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

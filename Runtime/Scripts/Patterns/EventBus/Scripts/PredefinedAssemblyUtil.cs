@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace FireAlt.Mono
+namespace FireAlt.MonoSystems
 {
     /// <summary>
     /// A utility class, PredefinedAssemblyUtil, provides methods to interact with predefined assemblies.

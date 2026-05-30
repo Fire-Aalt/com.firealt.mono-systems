@@ -1,4 +1,4 @@
-﻿namespace FireAlt.Mono
+﻿namespace FireAlt.MonoSystems
 {
     public interface IEvent { }
 }

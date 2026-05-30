@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace FireAlt.Mono
+namespace FireAlt.MonoSystems
 {
     public static class EventBus<T> where T : IEvent {
         static readonly HashSet<IEventBinding<T>> bindings = new HashSet<IEventBinding<T>>();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace FireAlt.Mono
+namespace FireAlt.MonoSystems
 {
     public class MultipleFilesDataHandler<T> : FileDataHandler<T> where T : DataModel
     {

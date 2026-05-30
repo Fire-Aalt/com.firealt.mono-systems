@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
-namespace FireAlt.Mono
+namespace FireAlt.MonoSystems
 {
     public class SceneTransitionManager : MonoBehaviour
     {

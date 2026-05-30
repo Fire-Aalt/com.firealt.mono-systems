@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 using Eflatun.SceneReference;
 
-namespace FireAlt.Mono
+namespace FireAlt.MonoSystems
 {
     public abstract class DataPersistenceManager<T1, T2> : Singleton<DataPersistenceManager<T1, T2>> where T1 : SettingsDataModel where T2 : GameDataModel
     {

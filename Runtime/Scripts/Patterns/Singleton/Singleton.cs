@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FireAlt.Mono
+namespace FireAlt.MonoSystems
 {
     public class Singleton<T> : MonoBehaviour where T : Component
     {
