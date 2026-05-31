@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using FireAlt.Core.Utility;
 
 namespace FireAlt.MonoSystems
 {
@@ -56,8 +57,9 @@ namespace FireAlt.MonoSystems
         /// </summary>
         /// <param name="interfaceType">Interface type to get all the Types for.</param>
         /// <returns>List of Types implementing the provided interface type.</returns>    
-        public static List<Type> GetTypes(Type interfaceType) {
-            Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+        public static List<Type> GetTypes(Type interfaceType) 
+        {
+            Assembly[] assemblies = ReflectionUtils.AllAssemblies;
         
             Dictionary<AssemblyType, Type[]> assemblyTypes = new Dictionary<AssemblyType, Type[]>();
             List<Type> types = new List<Type>();
