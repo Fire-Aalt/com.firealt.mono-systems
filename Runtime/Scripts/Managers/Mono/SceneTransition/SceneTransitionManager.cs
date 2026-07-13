@@ -10,7 +10,7 @@ namespace FireAlt.MonoSystems
     public class SceneTransitionManager : MonoBehaviour
     {
         [Title("References")]
-        [SerializeField] protected UIDocument loadingDocument;
+        [SerializeField] protected PanelRenderer loadingDocument;
         [SerializeField] protected Camera loadingCamera;
 
         [Title("Transition Params")]
@@ -27,11 +27,17 @@ namespace FireAlt.MonoSystems
 
         protected virtual void Awake()
         {
-            _blackPanel = loadingDocument.rootVisualElement.Q<VisualElement>("BlackPanel");
+            loadingDocument.RegisterUIReloadCallback(OnUIReload);
+            ((IPanelComponent)loadingDocument).PerformValidation(true);
             
             SetBlackPanelActive(true);
         }
 
+        private void OnUIReload(PanelRenderer renderer, VisualElement rootElement, int version)
+        {
+            _blackPanel = rootElement.Q<VisualElement>("BlackPanel");
+        }
+        
         protected virtual void Update()
         {
             if (loadingBar && SceneLoader.IsLoading)
