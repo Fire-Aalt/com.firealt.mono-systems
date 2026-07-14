@@ -37,8 +37,8 @@ namespace FireAlt.MonoSystems
         [SerializeField] private bool _useEncryption;
         [SerializeField, ReadOnly] private string _encryptionKey = Guid.NewGuid().ToString();
 
-        private T1 _settingsData;
-        private T2 _gameData;
+        [NonSerialized] private T1 _settingsData;
+        [NonSerialized] private T2 _gameData;
         private SingleFileDataHandler<T1> _settingsDataHandler;
         private MultipleFilesDataHandler<T2> _gameDataHandler;
         private Dictionary<SceneHandle, DataPersistenceObjects<T1, T2>> _sceneDataObjects;
