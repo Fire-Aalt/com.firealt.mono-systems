@@ -29,13 +29,12 @@ namespace FireAlt.MonoSystems
         {
             loadingDocument.RegisterUIReloadCallback(OnUIReload);
             ((IPanelComponent)loadingDocument).PerformValidation(true);
-            
-            SetBlackPanelActive(true);
         }
 
         private void OnUIReload(PanelRenderer renderer, VisualElement rootElement, int version)
         {
             _blackPanel = rootElement.Q<VisualElement>("BlackPanel");
+            SetBlackPanelActive(true);
         }
         
         protected virtual void Update()
