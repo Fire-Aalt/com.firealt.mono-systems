@@ -7,7 +7,7 @@
         "Unity.Addressables.Editor",
         "abzorba.artificetoolkit.runtime",
         "abzorba.artificetoolkit.editor",
-        "BovineLabs.Core.Extensions",
+        "BovineLabs.Nerve",
         "Eflatun.SceneReference",
         "UniTask",
         "UniTask.Addressables",

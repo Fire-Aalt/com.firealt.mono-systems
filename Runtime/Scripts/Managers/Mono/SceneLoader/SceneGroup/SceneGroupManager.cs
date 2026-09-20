@@ -7,7 +7,7 @@ using Eflatun.SceneReference;
 using Unity.Entities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using BovineLabs.Core.Pause;
+using BovineLabs.Nerve.Pause;
 
 #if ADDRESSABLES
 using UnityEngine.AddressableAssets;
