@@ -4,7 +4,6 @@
     "references": [
         "Eflatun.SceneReference",
         "UniTask",
-        "Unity.ResourceManager",
         "Unity.Entities",
         "Unity.Scenes",
         "Unity.Collections",
