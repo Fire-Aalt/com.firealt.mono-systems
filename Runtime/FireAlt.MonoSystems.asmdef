@@ -2,15 +2,12 @@
     "name": "FireAlt.MonoSystems",
     "rootNamespace": "FireAlt.MonoSystems",
     "references": [
-        "Unity.Addressables",
-        "Unity.ResourceManager",
-        "Unity.Addressables.Editor",
         "abzorba.artificetoolkit.runtime",
         "abzorba.artificetoolkit.editor",
         "BovineLabs.Nerve",
         "Eflatun.SceneReference",
         "UniTask",
-        "UniTask.Addressables",
+        "Unity.ResourceManager",
         "Unity.Entities",
         "Unity.Scenes",
         "Unity.Collections",
@@ -25,17 +22,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [
-        {
-            "name": "com.unity.entities",
-            "expression": "",
-            "define": "UNITY_ENTITIES"
-        },
-        {
-            "name": "com.unity.addressables",
-            "expression": "",
-            "define": "ADDRESSABLES"
-        }
-    ],
+    "versionDefines": [],
     "noEngineReferences": false
 }

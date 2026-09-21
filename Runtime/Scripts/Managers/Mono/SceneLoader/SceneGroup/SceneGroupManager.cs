@@ -9,12 +9,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using BovineLabs.Nerve.Pause;
 
-#if ADDRESSABLES
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
-#endif
-
 namespace FireAlt.MonoSystems
 {
     public class SceneGroupManager
@@ -24,10 +18,6 @@ namespace FireAlt.MonoSystems
         public event Action<string> OnSceneLoaded = delegate { };
         public event Action<string> OnSceneUnloaded = delegate { };
         public event Action OnSceneGroupLoaded = delegate { };
-
-#if ADDRESSABLES
-        private readonly AsyncOperationHandleGroup _handleGroup = new(10);
-#endif
         
         public SceneGroup ActiveSceneGroup { get; private set; }
 
@@ -40,16 +30,13 @@ namespace FireAlt.MonoSystems
             var bootLoader = ScenesDataSO.Instance.bootLoaderScene;
             SceneManager.SetActiveScene(bootLoader.LoadedScene);
 
-#if UNITY_ENTITIES
             if (restartEntitiesWorld)
             {
                 DisposeEntitiesWorld();
             }
-#endif
             
             await UnloadScenes(bootLoader.LoadedScene, reloadDupScenes, token);
 
-#if UNITY_ENTITIES
             if (restartEntitiesWorld)
             {
                 StartEntitiesWorld();
@@ -58,7 +45,6 @@ namespace FireAlt.MonoSystems
             var world = World.DefaultGameObjectInjectionWorld;
             var handle = world.GetOrCreateSystem<SceneLoaderPauseSystem>();
             SetEntitiesWorldPauseState(world, handle, true);
-#endif
 
             int sceneCount = SceneManager.sceneCount;
             for (var i = 0; i < sceneCount; i++)
@@ -81,15 +67,6 @@ namespace FireAlt.MonoSystems
 
                     operation.completed += _ => HandleSceneLoaded(sceneData);
                 }
-#if ADDRESSABLES
-                else if (sceneData.Reference.State == SceneReferenceState.Addressable)
-                {
-                    var sceneHandle = Addressables.LoadSceneAsync(sceneData.Reference.Path, LoadSceneMode.Additive);
-                    _handleGroup.Handles.Add(sceneHandle);
-
-                    sceneHandle.Completed += _ => HandleSceneLoaded(sceneData);
-                }
-#endif
             }
             
             if (loadDelay > 0)
@@ -97,27 +74,15 @@ namespace FireAlt.MonoSystems
                 await UniTask.Delay(loadDelay, cancellationToken: token);
             }
 
-            // Wait until all AsyncOperations in the group are done
-#if ADDRESSABLES
-            while (!operationGroup.IsDone || !_handleGroup.IsDone)
-            {
-                progress?.Report((operationGroup.Progress + _handleGroup.Progress) / 2);
-                
-                await UniTask.Delay(1, true, cancellationToken: token);
-            }
-#else
             while (!operationGroup.IsDone)
             {
                 progress?.Report(operationGroup.Progress);
                 
                 await UniTask.Delay(1, true, cancellationToken: token);
             }
-#endif
 
-#if UNITY_ENTITIES
             // Unfreeze systems
             SetEntitiesWorldPauseState(world, handle, false);
-#endif
             OnSceneGroupLoaded.Invoke();
         }
 
@@ -133,9 +98,6 @@ namespace FireAlt.MonoSystems
         private async UniTask UnloadScenes(Scene bootloaderScene, bool unloadDupScenes, CancellationToken token)
         {
             var scenesToUnload = new List<Scene>();
-#if ADDRESSABLES
-            var addressableScenesToUnload = new List<AsyncOperationHandle<SceneInstance>>();
-#endif
             int sceneCount = SceneManager.sceneCount;
 
             for (var i = 0; i < sceneCount; i++)
@@ -158,19 +120,7 @@ namespace FireAlt.MonoSystems
                     continue;
                 }
                 
-#if ADDRESSABLES
-                var addressableHandle =
-                    _handleGroup.Handles.FirstOrDefault(h => h.IsValid() && h.Result.Scene.path == scenePath);
-
-                if (addressableHandle.IsValid())
-                {
-                    addressableScenesToUnload.Add(addressableHandle);
-                }
-                else
-#endif
-                {
-                    scenesToUnload.Add(scene);
-                }
+                scenesToUnload.Add(scene);
             }
 
             var operationGroup = new AsyncOperationGroup(scenesToUnload.Count);
@@ -182,22 +132,8 @@ namespace FireAlt.MonoSystems
                 operationGroup.Operations.Add(operation);
             }
 
-#if ADDRESSABLES
-            var operationHandleGroup = new AsyncOperationHandleGroup(addressableScenesToUnload.Count);
-            foreach (var handle in addressableScenesToUnload)
-            {
-                var unloadHandle = Addressables.UnloadSceneAsync(handle);
-                if (!unloadHandle.IsValid()) continue;
-                operationHandleGroup.Handles.Add(unloadHandle);
-            }
-#endif
-
             // Wait until all AsyncOperations in the group are done
-            while (!operationGroup.IsDone
-#if ADDRESSABLES
-                   && !operationHandleGroup.IsDone
-#endif
-)
+            while (!operationGroup.IsDone)
             {
                 await UniTask.Delay(1, cancellationToken: token);
             }
@@ -206,19 +142,11 @@ namespace FireAlt.MonoSystems
             {
                 OnSceneUnloaded.Invoke(scene.path);
             }
-#if ADDRESSABLES
-            foreach (var handle in addressableScenesToUnload)
-            {
-                _handleGroup.Handles.Remove(handle);
-                OnSceneUnloaded.Invoke(handle.Result.Scene.path);
-            }
-#endif
-
+            
             // Optional: UnloadUnusedAssets - unloads all unused assets from memory
             await Resources.UnloadUnusedAssets();
         }
         
-#if UNITY_ENTITIES
         private static void DisposeEntitiesWorld()
         {
             World.DefaultGameObjectInjectionWorld.Dispose();
@@ -239,7 +167,6 @@ namespace FireAlt.MonoSystems
             if (pause) PauseGame.Pause(ref state, pauseAll: true);
             else PauseGame.Unpause(ref state);
         }
-#endif
     }
     
     public readonly struct AsyncOperationGroup
@@ -254,19 +181,4 @@ namespace FireAlt.MonoSystems
             Operations = new List<AsyncOperation>(initialCapacity);
         }
     }
-
-#if ADDRESSABLES
-    public readonly struct AsyncOperationHandleGroup
-    {
-        public readonly List<AsyncOperationHandle<SceneInstance>> Handles;
-
-        public float Progress => Handles.Count == 0 ? 0 : Handles.Average(h => h.PercentComplete);
-        public bool IsDone => Handles.Count == 0 || Handles.All(o => o.IsDone);
-
-        public AsyncOperationHandleGroup(int initialCapacity)
-        {
-            Handles = new List<AsyncOperationHandle<SceneInstance>>(initialCapacity);
-        }
-    }
-#endif
 }
