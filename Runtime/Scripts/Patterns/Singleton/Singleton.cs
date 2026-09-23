@@ -1,7 +1,9 @@
+using Unity.Scripting.LifecycleManagement;
 using UnityEngine;
 
 namespace FireAlt.MonoSystems
 {
+    [NoAutoStaticsCleanup]
     public class Singleton<T> : MonoBehaviour where T : Component
     {
         protected static T instance;

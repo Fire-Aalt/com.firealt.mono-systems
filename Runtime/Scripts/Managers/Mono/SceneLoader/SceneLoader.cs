@@ -1,3 +1,4 @@
+using Unity.Scripting.LifecycleManagement;
 using Cysharp.Threading.Tasks;
 using System;
 using ArtificeToolkit.Attributes;
@@ -6,6 +7,7 @@ using UnityEngine;
 namespace FireAlt.MonoSystems
 {
     [RequireComponent(typeof(SceneTransitionManager))]
+    [NoAutoStaticsCleanup]
     public class SceneLoader : Singleton<SceneLoader>
     {
         [Title("Scenes")]

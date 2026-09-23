@@ -1,15 +1,16 @@
 #if UNITY_EDITOR
 using FireAlt.MonoSystems;
+using Unity.Scripting.LifecycleManagement;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 namespace HierarchyRestore
 {
-    [InitializeOnLoad]
-    public class Startup
+    public partial class Startup
     {
-        static Startup()
+        [OnCodeInitializing]
+        private static void Initialize()
         {
             if (!GameEssentialsSettingsProvider.RestoreHierarchyEnabled)
             {
@@ -18,15 +19,22 @@ namespace HierarchyRestore
 
             EditorSceneManager.sceneOpened += OnEditorSceneManagerSceneOpened;
             EditorSceneManager.sceneClosing += OnEditorSceneClosing;
-            EditorApplication.quitting += () =>
-            {
-                HierarchyRestorer.SaveActiveHierarchy(SceneManager.GetActiveScene());
-            };
-            EditorApplication.delayCall += () =>
-            {
-                HierarchyRestorer.LoadActiveHierarchy(SceneManager.GetActiveScene());
-            };
+            EditorApplication.quitting += SaveActiveHierarchy;
+            EditorApplication.delayCall += LoadActiveHierarchy;
         }
+
+        [OnCodeUnloading]
+        private static void Unload()
+        {
+            EditorSceneManager.sceneOpened -= OnEditorSceneManagerSceneOpened;
+            EditorSceneManager.sceneClosing -= OnEditorSceneClosing;
+            EditorApplication.quitting -= SaveActiveHierarchy;
+            EditorApplication.delayCall -= LoadActiveHierarchy;
+        }
+
+        private static void SaveActiveHierarchy() => HierarchyRestorer.SaveActiveHierarchy(SceneManager.GetActiveScene());
+
+        private static void LoadActiveHierarchy() => HierarchyRestorer.LoadActiveHierarchy(SceneManager.GetActiveScene());
 
         private static void OnEditorSceneManagerSceneOpened(Scene scene, OpenSceneMode mode)
         {

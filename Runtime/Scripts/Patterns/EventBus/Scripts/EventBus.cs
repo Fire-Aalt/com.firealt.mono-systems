@@ -1,7 +1,9 @@
+using Unity.Scripting.LifecycleManagement;
 using System.Collections.Generic;
 
 namespace FireAlt.MonoSystems
 {
+    [NoAutoStaticsCleanup]
     public static class EventBus<T> where T : IEvent {
         static readonly HashSet<IEventBinding<T>> bindings = new HashSet<IEventBinding<T>>();
     

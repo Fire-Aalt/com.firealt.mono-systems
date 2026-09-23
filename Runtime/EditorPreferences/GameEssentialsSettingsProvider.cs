@@ -7,9 +7,6 @@ namespace FireAlt.MonoSystems
 {
     public class GameEssentialsSettingsProvider : SettingsProvider
     {
-        private const string OpenSubScenes = "OpenSubScenes";
-        public static bool OpenSubScenesEnabled => EditorPrefs.GetBool(OpenSubScenes, true);
-        
         private const string RestoreHierarchy = "RestoreHierarchy";
         public static bool RestoreHierarchyEnabled => EditorPrefs.GetBool(RestoreHierarchy, true);
 
@@ -21,7 +18,6 @@ namespace FireAlt.MonoSystems
         {
             base.OnGUI(searchContext);
 
-            Toggle(OpenSubScenesEnabled, OpenSubScenes, "Open SubScenes When Scene Is Opened");
             Toggle(RestoreHierarchyEnabled, RestoreHierarchy, "Restore Hierarchy After Scene Reopening");
         }
 

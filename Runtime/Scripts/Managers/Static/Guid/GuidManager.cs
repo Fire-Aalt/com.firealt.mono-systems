@@ -1,3 +1,4 @@
+using Unity.Scripting.LifecycleManagement;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -7,6 +8,7 @@ namespace FireAlt.MonoSystems
     /// <summary>
     /// Class to handle registering and accessing objects by GUID
     /// </summary>
+    [NoAutoStaticsCleanup]
     public class GuidManager
     {
         // for each GUID we need to know the Game Object it references

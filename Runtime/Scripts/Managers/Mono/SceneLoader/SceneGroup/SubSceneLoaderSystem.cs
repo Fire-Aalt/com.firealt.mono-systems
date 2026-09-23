@@ -1,4 +1,3 @@
-#if UNITY_ENTITIES
 using System;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -95,4 +94,3 @@ namespace FireAlt.MonoSystems
         public Entity Value;
     }
 }
-#endif

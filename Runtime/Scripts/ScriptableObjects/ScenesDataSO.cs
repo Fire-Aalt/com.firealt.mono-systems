@@ -1,3 +1,4 @@
+using Unity.Scripting.LifecycleManagement;
 using ArtificeToolkit.Attributes;
 using Eflatun.SceneReference;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 namespace FireAlt.MonoSystems
 {
     [CreateAssetMenu(menuName = "Data/Scenes Data")]
+    [NoAutoStaticsCleanup]
     public class ScenesDataSO : ScriptableObject
     {
         private const string SCENES_DATA_PATH = "ScenesData";

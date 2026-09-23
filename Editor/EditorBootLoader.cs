@@ -4,16 +4,20 @@ using Eflatun.SceneReference;
 using System.Linq;
 using UnityEditor.SceneManagement;
 using UnityEditor;
+using Unity.Scripting.LifecycleManagement;
 
 namespace FireAlt.MonoSystems.Editor
 {
-    [InitializeOnLoad]
-    public static class EditorBootLoader
+    public static partial class EditorBootLoader
     {
-        static EditorBootLoader()
+        [OnCodeInitializing]
+        private static void Initialize()
         {
             EditorApplication.playModeStateChanged += HandlePlayModeStateChanged;
         }
+
+        [OnCodeUnloading]
+        private static void Unload() => EditorApplication.playModeStateChanged -= HandlePlayModeStateChanged;
 
         private static void HandlePlayModeStateChanged(PlayModeStateChange state)
         {
@@ -21,7 +25,7 @@ namespace FireAlt.MonoSystems.Editor
             {
                 return;
             }
-            
+
             switch (state)
             {
                 case PlayModeStateChange.ExitingEditMode:

@@ -1,13 +1,16 @@
-﻿using UnityEngine;
+﻿using Unity.Scripting.LifecycleManagement;
+using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Eflatun.SceneReference;
 
 namespace FireAlt.MonoSystems
 {
+    [NoAutoStaticsCleanup]
     public static class BootLoader
     {
         private static ScenesDataSO scenesData;
 
+        // The boot scene must already be loaded before its SceneReference is checked.
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static async void OnAfterSceneLoad()
         {

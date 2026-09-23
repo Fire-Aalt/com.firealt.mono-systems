@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using Unity.Scripting.LifecycleManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using Object = UnityEngine.Object;
 
 namespace HierarchyRestore
 {
+    [NoAutoStaticsCleanup]
     public static class Utilities
     {
         static EditorWindow hierarchyWindow
