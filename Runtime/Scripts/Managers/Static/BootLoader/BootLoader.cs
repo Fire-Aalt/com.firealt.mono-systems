@@ -2,9 +2,11 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Eflatun.SceneReference;
+using UnityEngine.Scripting;
 
 namespace FireAlt.MonoSystems
 {
+    [Preserve]
     [NoAutoStaticsCleanup]
     public static class BootLoader
     {
