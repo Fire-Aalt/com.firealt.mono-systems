@@ -2,106 +2,69 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using ArtificeToolkit.Attributes;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Image = UnityEngine.UI.Image;
 
 namespace FireAlt.MonoSystems
 {
+    /// <summary>
+    /// Backend-agnostic host for scene transitions. Owns the loading camera, timing and progress reporting,
+    /// and delegates all visuals to an optional <see cref="SceneTransitionView"/>.
+    /// </summary>
     public class SceneTransitionManager : MonoBehaviour
     {
         [Title("References")]
-        [SerializeField] protected PanelRenderer loadingDocument;
+        [SerializeField] protected SceneTransitionView view;
         [SerializeField] protected Camera loadingCamera;
 
         [Title("Transition Params")]
         [SerializeField] protected float initializeSceneGroupDuration = 1f;
-        [SerializeField] protected float transitionDuration = 0.5f;
 
-        [Title("Loading Bar")]
-        [SerializeField] protected bool loadingBar;
-        [SerializeField, EnableIf(nameof(loadingBar), true)] protected Image loadingBarImage;
-        [SerializeField, EnableIf(nameof(loadingBar), true)] protected float fillSpeed = 5f;
-
-        protected float targetProgress;
-        private VisualElement _blackPanel;
-
-        protected virtual void Awake()
-        {
-            loadingDocument.RegisterUIReloadCallback(OnUIReload);
-            ((IPanelComponent)loadingDocument).PerformValidation(true);
-        }
-
-        private void OnUIReload(PanelRenderer renderer, VisualElement rootElement, int version)
-        {
-            _blackPanel = rootElement.Q<VisualElement>("BlackPanel");
-            SetBlackPanelActive(true);
-        }
-        
-        protected virtual void Update()
-        {
-            if (loadingBar && SceneLoader.IsLoading)
-            {
-                float currentFillAmount = loadingBarImage.fillAmount;
-                float progressDifference = Mathf.Abs(currentFillAmount - targetProgress);
-
-                float dynamicFillSpeed = progressDifference * fillSpeed;
-
-                loadingBarImage.fillAmount = Mathf.Lerp(currentFillAmount, targetProgress, Time.deltaTime * dynamicFillSpeed);
-            }
-        }
+        public SceneTransitionView View => view;
 
         public virtual LoadingProgress InitializeProgressBar()
         {
-            if (loadingBar)
-            {
-                loadingBarImage.fillAmount = 0f;
-            }
-            targetProgress = 1f;
-
             LoadingProgress progress = new();
-            progress.Progressed += target => targetProgress = Mathf.Max(target, targetProgress);
+
+            if (view != null)
+            {
+                view.ResetProgress();
+                progress.Progressed += view.ReportProgress;
+            }
 
             return progress;
         }
 
         public virtual void EnableLoadingCamera(bool enable)
         {
+            if (loadingCamera == null)
+            {
+                return;
+            }
+
             loadingCamera.depth = enable ? 100 : -100;
             loadingCamera.enabled = enable;
         }
 
         public virtual async UniTask TransitionIn(CancellationToken token)
         {
-            await LerpBlackPanelOpacity(transitionDuration, true, token);
+            if (view != null)
+            {
+                await view.FadeIn(token);
+            }
         }
 
         public virtual async UniTask TransitionOut(CancellationToken token)
         {
-            await UniTask.WaitForSeconds(initializeSceneGroupDuration, ignoreTimeScale: true, cancellationToken: token);
-            await LerpBlackPanelOpacity(transitionDuration, false, token);
-        }
-
-        protected virtual async UniTask LerpBlackPanelOpacity(float duration, bool setActive, CancellationToken token)
-        {
-            float startAlpha = setActive ? 0f : 1f;
-            float endAlpha = setActive ? 1f : 0f;
-
-            float elapsedTime = 0f;
-            while (elapsedTime < duration)
+            if (view != null)
             {
-                elapsedTime += Time.unscaledDeltaTime;
-
-                _blackPanel.style.opacity = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
-                await UniTask.Yield(cancellationToken: token);
+                view.CompleteProgress();
             }
 
-            SetBlackPanelActive(setActive);
-        }
+            await UniTask.WaitForSeconds(initializeSceneGroupDuration, ignoreTimeScale: true, cancellationToken: token);
 
-        private void SetBlackPanelActive(bool isActive)
-        {
-            _blackPanel.style.opacity = isActive ? 1f : 0f;
-            _blackPanel.pickingMode = isActive ? PickingMode.Position : PickingMode.Ignore;
+            if (view != null)
+            {
+                await view.FadeOut(token);
+            }
         }
     }
 }
